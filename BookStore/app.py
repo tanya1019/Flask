@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for,request
+from flask import Flask, redirect, url_for,request, render_template
 
 app = Flask(__name__)
 
@@ -17,7 +17,28 @@ def add(guest):
     else:
         return redirect(url_for('guest', username = guest))
 
+@app.route('/abc')
+def abc():
+    return 'this is request page %s' % request.headers
+
 @app.route('/')
 def index():
-    return 'this is request page %s' % request.headers
+    return render_template('index.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.run(debug = True)
