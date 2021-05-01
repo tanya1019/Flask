@@ -35,6 +35,12 @@ def books():
     return render_template('book.html', books=books)
 
 
+@app.route('/updatebooks')
+def updatebooks():
+    books = Book.query.all()
+    return render_template('updatebook.html', books=books)
+
+
 @app.route('/addbook')
 def addbook():
     return render_template('addbook.html')
