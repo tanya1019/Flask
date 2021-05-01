@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{% block body %}
+
+<form action = '/submitform' method="POST">
+    <input type = 'text' name = 'name' placeholder = 'Enter name of the book'>
+    <input type="text" name = 'author' placeholder = 'Enter the name of author'>
+    <input type = 'submit'>
+</form>
+{% endblock %}

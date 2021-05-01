@@ -23,4 +23,16 @@ def books():
     return render_template('book.html', books=books)
 
 
+@app.route('/addbook')
+def addbook():
+    return render_template('addbook.html')
+
+
+@app.route('/submitform', methods=['POST'])
+def submitform():
+    name = request.form['name']
+    author = request.form['author']
+    return 'Book name is %s and Author is %s' % (name, author)
+
+
 app.run(debug=True)
