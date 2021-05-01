@@ -48,7 +48,10 @@ def addbook():
 def submitform():
     name = request.form['name']
     author = request.form['author']
-    return 'Book name is %s and Author is %s' % (name, author)
+    book = Book(name=name, author=author)
+    db.session.add(book)
+    db.session.commit()
+    return 'Data Stored Successfully!! Book name is %s and Author is %s' % (name, author)
 
 
 if __name__ == '__main__':
