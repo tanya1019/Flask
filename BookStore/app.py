@@ -1,4 +1,5 @@
 from flask import Flask, redirect, url_for, request, render_template
+# pip install sqlalchemy flask-sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -8,8 +9,14 @@ database_file = 'sqlite:///{}'.format(
 
 app = Flask(__name__)
 
-app.config('SQLAlchemy_DATABASE_URI') = database_file
+app.config['SQLALCHEMY_DATABASE_URI'] = database_file
 db = SQLAlchemy(app)
+
+
+class Book(db.Model):
+    name = db.Column(db.String(100), unique=True,
+                     primary_key=True, nullable=False)
+    author = db.Column(db.String(100), nullable=False)
 
 
 @app.route('/')
@@ -44,4 +51,5 @@ def submitform():
     return 'Book name is %s and Author is %s' % (name, author)
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
