@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request, render_template
+from flask import Flask, redirect, url_for, request, render_template, redirect
 # pip install sqlalchemy flask-sqlalchemy
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -31,11 +31,7 @@ def profile(username):
 
 @app.route('/books')
 def books():
-    books = [
-        {'name': "Book1", 'author': 'Author1', 'cover': 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1594616847'},
-        {'name': "Book2", 'author': 'Author2', 'cover': 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1594616847'},
-        {'name': "Book3", 'author': 'Author3', 'cover': 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1594616847'}
-    ]
+    books = Book.query.all()
     return render_template('book.html', books=books)
 
 
@@ -51,7 +47,7 @@ def submitform():
     book = Book(name=name, author=author)
     db.session.add(book)
     db.session.commit()
-    return 'Data Stored Successfully!! Book name is %s and Author is %s' % (name, author)
+    return redirect('/books')
 
 
 if __name__ == '__main__':
