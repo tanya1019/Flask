@@ -15,7 +15,11 @@ def profile(username):
 
 @app.route('/books')
 def books():
-    books = ['book1', 'book2', 'book3']
+    books = [
+        {'name': "Book1", 'author': 'Author1', 'cover': 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1594616847'},
+        {'name': "Book2", 'author': 'Author2', 'cover': 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1594616847'},
+        {'name': "Book3", 'author': 'Author3', 'cover': 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1594616847'}
+    ]
     return render_template('book.html', books=books)
 
 
