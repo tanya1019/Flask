@@ -13,4 +13,10 @@ def profile(username):
     return render_template('profile.html', username=username, isActive=False)
 
 
+@app.route('/books')
+def books():
+    books = ['book1', 'book2', 'book3']
+    return render_template('book.html', books=books)
+
+
 app.run(debug=True)
