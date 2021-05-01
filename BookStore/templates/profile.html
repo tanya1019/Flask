@@ -1,12 +1,8 @@
-<html>
-    <head>
-        <title>Documentation</title>
-    </head>
-    <body>
+{% extends 'base.html' %}
+{% block body %}
         {% if isActive %}
         <h1>{{username}} is logged in </h1>
         {% else%}
         <h1>{{username}} is logged out</h1>
         {%endif%}
-    </body>
-</html>
+{%endblock%}
