@@ -7,5 +7,11 @@
     <input type= "text" value = "{{book.author}}" name = 'newauthor'>
     <input type = 'submit' value = 'update'>
 </form>
+
+<form action = '\delete' method="POST">
+    <input type = 'hidden' value = '{{book.name}}' name = 'name'>
+    <input type = 'submit' value = 'Delete'>
+</form>
+
 {% endfor %}
 {% endblock %}

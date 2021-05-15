@@ -19,7 +19,7 @@ class Book(db.Model):
     author = db.Column(db.String(100), nullable=False)
 
 
-@app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
@@ -40,11 +40,19 @@ def updatebooks():
     books = Book.query.all()
     return render_template('updatebook.html', books=books)
 
+@app.route('/delete', methods = ['POST'])
+def delete():
+    name = request.form['name']
+    book = Book.query.filter_by(name = name).first()
+    db.session.delete(book)
+    db.session.commit()
+    return redirect('/books')
+
 
 @app.route('/addbook')
 def addbook():
     return render_template('addbook.html')
-
+    
 
 @app.route('/submitform', methods=['POST'])
 def submitform():
